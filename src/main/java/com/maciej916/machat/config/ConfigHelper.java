@@ -14,7 +14,8 @@ public final class ConfigHelper {
 		ConfigValues.customChat = ConfigHolder.CLIENT.customChat.get();
 		ConfigValues.customChatFormat = ConfigHolder.CLIENT.customChatFormat.get();
 
-
+		// Motd
+		ConfigValues.motdEnabled = ConfigHolder.CLIENT.motdEnabled.get();
 	}
 
 	public static void bakeServer(final ModConfig config) {

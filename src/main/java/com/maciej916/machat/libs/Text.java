@@ -4,8 +4,6 @@ import com.maciej916.machat.config.ConfigValues;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.text.StringTextComponent;
 
-import java.awt.*;
-
 public class Text {
 
     private static String rankColor(ServerPlayerEntity player) {
@@ -25,17 +23,19 @@ public class Text {
         return "&8" + username + "&r";
     }
 
-    public static StringTextComponent replaceVariables(ServerPlayerEntity player, String text) {
+    public static String replaceVariables(ServerPlayerEntity player, String text) {
+        text = text.replaceAll("%username%", rankColor(player));
+        text = text.replaceAll("%dimension%", player.dimension.getKey(player.dimension).toString());
+        text = text.replaceAll("%players%", String.valueOf(player.server.getPlayerList().getOnlinePlayerNames().length));
+        text = text.replaceAll("%max_players%", String.valueOf(player.server.getPlayerList().getMaxPlayers()));
+        text = text.replaceAll("&", Character.toString ((char) 167));
+        return text;
+    }
+
+    public static StringTextComponent replaceChatVariables(ServerPlayerEntity player, String text) {
         String format = ConfigValues.customChatFormat;
-
-        format = format.replaceAll("%username%", rankColor(player));
         format = format.replaceAll("%message%", text);
-
-        format = format.replaceAll("%dimension%", player.dimension.getKey(player.dimension).toString());
-        format = format.replaceAll("%players%", String.valueOf(player.server.getPlayerList().getOnlinePlayerNames().length));
-        format = format.replaceAll("%max_players%", String.valueOf(player.server.getPlayerList().getMaxPlayers()));
-
-        format = format.replaceAll("&", Character.toString ((char) 167));
+        format = replaceVariables(player, format);
         return new StringTextComponent(format);
     }
 }

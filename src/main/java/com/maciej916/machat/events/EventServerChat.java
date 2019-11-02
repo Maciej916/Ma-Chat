@@ -18,7 +18,7 @@ public class EventServerChat {
                 message = message.replaceAll("&", Character.toString ((char) 167));
             }
 
-            TextComponent msg = Text.replaceVariables(player, message);
+            TextComponent msg = Text.replaceChatVariables(player, message);
             event.setComponent(msg);
         }
     }
