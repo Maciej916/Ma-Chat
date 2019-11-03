@@ -11,7 +11,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class EventPlayerLoggedIn {
+public final class EventPlayerLoggedIn {
 
     public static void event(PlayerEvent.PlayerLoggedInEvent event) {
         ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();

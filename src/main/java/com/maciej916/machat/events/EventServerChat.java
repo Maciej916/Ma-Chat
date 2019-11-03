@@ -6,7 +6,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.text.TextComponent;
 import net.minecraftforge.event.ServerChatEvent;
 
-public class EventServerChat {
+public final class EventServerChat {
 
     public static void event(ServerChatEvent event) {
         if (ConfigValues.customChat) {
