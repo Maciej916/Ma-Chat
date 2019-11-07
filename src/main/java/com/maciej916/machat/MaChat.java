@@ -22,12 +22,13 @@ public class MaChat
         modLoadingContext.registerConfig(ModConfig.Type.SERVER, ConfigHolder.SERVER_SPEC);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onServerSetup);
+        MinecraftForge.EVENT_BUS.register(Commands.class);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
     public void onServerSetup(FMLCommonSetupEvent event) {
-        DataLoader.setup();
+        DataLoader.setupMain();
     }
 
     @SubscribeEvent

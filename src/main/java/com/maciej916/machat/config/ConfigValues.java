@@ -4,10 +4,18 @@ public final class ConfigValues {
 
 	public static String mainCatalog;
 
+	// Client
+	public static boolean clientEnable;
+
+
 	// Chat
 	public static boolean customChat;
-	public static String customChatFormat;
 
 	// Motd
 	public static boolean motdEnabled;
+
+	// Rules
+	public static boolean rulesEnabled;
+	public static int rulesPerPage;
+
 }

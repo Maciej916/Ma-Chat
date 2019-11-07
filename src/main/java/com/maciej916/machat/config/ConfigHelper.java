@@ -10,12 +10,8 @@ public final class ConfigHelper {
 	public static void bakeClient(final ModConfig config) {
 		clientConfig = config;
 
-		// Chat
-		ConfigValues.customChat = ConfigHolder.CLIENT.customChat.get();
-		ConfigValues.customChatFormat = ConfigHolder.CLIENT.customChatFormat.get();
-
-		// Motd
-		ConfigValues.motdEnabled = ConfigHolder.CLIENT.motdEnabled.get();
+		// Enable
+		ConfigValues.clientEnable = ConfigHolder.CLIENT.clientEnable.get();
 	}
 
 	public static void bakeServer(final ModConfig config) {
@@ -23,10 +19,13 @@ public final class ConfigHelper {
 
 		// Chat
 		ConfigValues.customChat = ConfigHolder.SERVER.customChat.get();
-		ConfigValues.customChatFormat = ConfigHolder.SERVER.customChatFormat.get();
 
 		// Motd
 		ConfigValues.motdEnabled = ConfigHolder.SERVER.motdEnabled.get();
+
+		// Rules
+		ConfigValues.rulesEnabled = ConfigHolder.SERVER.rulesEnabled.get();
+		ConfigValues.rulesPerPage = ConfigHolder.SERVER.rulesPerPage.get();
 	}
 
 	public static void setValueAndSave(final ModConfig modConfig, final String path, final Object newValue) {

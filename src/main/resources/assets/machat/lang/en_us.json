@@ -1,0 +1,11 @@
+{
+  "_comment": "Rules",
+  "rules.machat.not_exist": "§cThis page does not exist",
+
+
+  "_comment": "Reload",
+  "maereload.machat.done": "§aMod data reloaded, please keep in mind this command does not reload configuration!",
+
+
+  "test.machat.test": "%s"
+}
