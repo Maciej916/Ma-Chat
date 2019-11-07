@@ -25,7 +25,8 @@ public final class ConfigHelper {
 		ConfigValues.customChat = ConfigHolder.SERVER.customChat.get();
 		ConfigValues.customChatFormat = ConfigHolder.SERVER.customChatFormat.get();
 
-
+		// Motd
+		ConfigValues.motdEnabled = ConfigHolder.SERVER.motdEnabled.get();
 	}
 
 	public static void setValueAndSave(final ModConfig modConfig, final String path, final Object newValue) {
