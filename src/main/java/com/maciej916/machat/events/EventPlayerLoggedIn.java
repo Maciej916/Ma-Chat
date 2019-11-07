@@ -15,6 +15,10 @@ public final class EventPlayerLoggedIn {
 
     public static void event(PlayerEvent.PlayerLoggedInEvent event) {
         ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
+        if (!player.server.isDedicatedServer() && !ConfigValues.clientEnable) {
+            return;
+        }
+
         if (ConfigValues.motdEnabled) {
             BufferedReader reader;
             try {

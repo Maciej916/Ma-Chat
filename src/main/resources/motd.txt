@@ -1,3 +1,4 @@
 &6Welcome %username% &6to our server, while your here please behave and follow the rules
+&6You can check our rules by typing &c/rules
 &6Current players &c%players%&6/&c%max_players%
 &6You can find most command help using &c/help

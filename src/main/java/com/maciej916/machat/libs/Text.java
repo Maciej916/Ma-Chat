@@ -1,8 +1,12 @@
 package com.maciej916.machat.libs;
 
+import com.maciej916.machat.classes.chat.ChatData;
 import com.maciej916.machat.config.ConfigValues;
+import com.maciej916.machat.data.DataManager;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.text.StringTextComponent;
+
+import javax.xml.crypto.Data;
 
 public class Text {
 
@@ -30,12 +34,5 @@ public class Text {
         text = text.replaceAll("%max_players%", String.valueOf(player.server.getPlayerList().getMaxPlayers()));
         text = text.replaceAll("&", Character.toString ((char) 167));
         return text;
-    }
-
-    public static StringTextComponent replaceChatVariables(ServerPlayerEntity player, String text) {
-        String format = ConfigValues.customChatFormat;
-        format = format.replaceAll("%message%", text);
-        format = replaceVariables(player, format);
-        return new StringTextComponent(format);
     }
 }

@@ -1,0 +1,14 @@
+{
+  "format_top": "&8======= &6Rules (&c%page%&6/&c%max_pages%&6) &8=======",
+  "format_rule": "&C%id% &8:: &6%rule%",
+  "format_bottom": "&8=========================",
+  "rules": [
+    "No begging. Asking nicely once or twice is acceptable.",
+    "No offensive builds, names or skins.",
+    "No spamming.",
+    "Don't complain about lag.",
+    "Don't curse in public chats or in personal ones.",
+    "&4Custom &2color &btest&5...",
+    "Bla bla bla...."
+  ]
+}
