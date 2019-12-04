@@ -25,6 +25,7 @@ public class CommandMacReload {
         Log.log("Call DataLoader");
         DataLoader.load();
         player.sendMessage(Methods.formatText("maereload.machat.done"));
+
         return Command.SINGLE_SUCCESS;
     }
 }
