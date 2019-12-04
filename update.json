@@ -2,13 +2,14 @@
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/ma-chat",
   "changelog": "https://www.curseforge.com/minecraft/mc-mods/ma-chat/files",
   "1.14.4": {
+    "1.2.1": "https://www.curseforge.com/minecraft/mc-mods/ma-chat/files/2836545",
     "1.2.0": "https://www.curseforge.com/minecraft/mc-mods/ma-chat/files/2823418",
     "1.1.1": "https://www.curseforge.com/minecraft/mc-mods/ma-chat/files/2823366",
     "1.1.0": "https://www.curseforge.com/minecraft/mc-mods/ma-chat/files/2821247",
     "1.0.0": "https://www.curseforge.com/minecraft/mc-mods/ma-chat/files/2820632"
   },
   "promos": {
-    "1.14.4-latest": "1.2.0",
-    "1.14.4-recommended": "1.2.0"
+    "1.14.4-latest": "1.2.1",
+    "1.14.4-recommended": "1.2.1"
   }
 }
