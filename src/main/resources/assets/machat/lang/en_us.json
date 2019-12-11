@@ -4,7 +4,7 @@
 
 
   "_comment": "Reload",
-  "maereload.machat.done": "§aMod data reloaded, please keep in mind this command does not reload configuration!",
+  "maereload.machat.done": "§aMod data reloaded!",
 
 
   "test.machat.test": "%s"

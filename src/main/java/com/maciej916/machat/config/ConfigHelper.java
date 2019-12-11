@@ -11,21 +11,27 @@ public final class ConfigHelper {
 		clientConfig = config;
 
 		// Enable
-		ConfigValues.clientEnable = ConfigHolder.CLIENT.clientEnable.get();
+		ConfigValues.client_enable = ConfigHolder.CLIENT.clientEnable.get();
 	}
 
 	public static void bakeServer(final ModConfig config) {
 		serverConfig = config;
 
 		// Chat
-		ConfigValues.customChat = ConfigHolder.SERVER.customChat.get();
+		ConfigValues.custom_chat = ConfigHolder.SERVER.custom_chat.get();
+		ConfigValues.rank_colors = ConfigHolder.SERVER.rank_colors.get();
+		ConfigValues.rank_color_0 = ConfigHolder.SERVER.rank_color_0.get();
+		ConfigValues.rank_color_1 = ConfigHolder.SERVER.rank_color_1.get();
+		ConfigValues.rank_color_2 = ConfigHolder.SERVER.rank_color_2.get();
+		ConfigValues.rank_color_3 = ConfigHolder.SERVER.rank_color_3.get();
+		ConfigValues.rank_color_4 = ConfigHolder.SERVER.rank_color_4.get();
 
 		// Motd
-		ConfigValues.motdEnabled = ConfigHolder.SERVER.motdEnabled.get();
+		ConfigValues.motd_enabled = ConfigHolder.SERVER.motdEnabled.get();
 
 		// Rules
-		ConfigValues.rulesEnabled = ConfigHolder.SERVER.rulesEnabled.get();
-		ConfigValues.rulesPerPage = ConfigHolder.SERVER.rulesPerPage.get();
+		ConfigValues.rules_enabled = ConfigHolder.SERVER.rulesEnabled.get();
+		ConfigValues.rules_per_page = ConfigHolder.SERVER.rulesPerPage.get();
 	}
 
 	public static void setValueAndSave(final ModConfig modConfig, final String path, final Object newValue) {

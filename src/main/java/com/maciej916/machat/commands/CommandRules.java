@@ -17,7 +17,7 @@ import net.minecraft.util.text.StringTextComponent;
 
 import java.util.ArrayList;
 
-import static com.maciej916.machat.libs.Text.replaceVariables;
+import static com.maciej916.machat.libs.text.TextFormat.*;
 
 public class CommandRules {
     public static void register(CommandDispatcher<CommandSource> dispatcher) {
@@ -43,36 +43,59 @@ public class CommandRules {
         return Command.SINGLE_SUCCESS;
     }
 
-    private static String formatPage(ServerPlayerEntity player, String text, int page, int maxPages) {
-        text = text.replaceAll("%page%", String.valueOf(page));
-        text = text.replaceAll("%max_pages%", String.valueOf(maxPages));
-        return replaceVariables(player, text);
+    public static ArrayList<Object> replacePage(ArrayList<Object> var, int page, int maxPages) {
+        ArrayList<String> replace = new ArrayList<>();
+        ArrayList<Object> replaceWith = new ArrayList<>();
+
+        replace.add("page");
+        replaceWith.add(new StringTextComponent(String.valueOf(page)));
+
+        replace.add("max_pages");
+        replaceWith.add(new StringTextComponent(String.valueOf(maxPages)));
+
+        return variableReplacer(var, replace, replaceWith);
     }
 
-    private static String formatRule(ServerPlayerEntity player, String text, int id, String rule) {
-        text = text.replaceAll("%id%", String.valueOf(id));
-        text = text.replaceAll("%rule%", rule);
-        return replaceVariables(player, text);
+    public static ArrayList<Object> replaceRule(ArrayList<Object> var, int id, String rule) {
+        ArrayList<String> replace = new ArrayList<>();
+        ArrayList<Object> replaceWith = new ArrayList<>();
+
+        replace.add("id");
+        replaceWith.add(new StringTextComponent(String.valueOf(id + 1)));
+
+        replace.add("rule");
+        replaceWith.add(new StringTextComponent(replaceColors(rule)));
+
+        return variableReplacer(var, replace, replaceWith);
     }
 
     private static void showRules(ServerPlayerEntity player, int page) {
         RulesData rules = DataManager.getRules();
 
         int rulesCount = rules.rulesList().size();
-        int rulesPerPage = ConfigValues.rulesPerPage;
+        int rulesPerPage = ConfigValues.rules_per_page;
         int minPage = (page * rulesPerPage) - rulesPerPage;
         int maxPage = Math.min(page * rulesPerPage, rulesCount);
-        int maxPages = (int) Math.ceil( ((double)rulesCount) / rulesPerPage);
+        int maxPages = (int) Math.ceil(((double)rulesCount) / rulesPerPage);
 
         if (page > maxPages) {
             player.sendMessage(Methods.formatText("rules.machat.not_exist"));
             return;
         }
 
-        player.sendMessage(new StringTextComponent(formatPage(player, rules.format_top, page, maxPages)));
+        ArrayList<Object> var = variableFinder(rules.format_top, true);
+        var = replacePage(var, page, maxPages);
+        player.sendMessage(componentBuilder(var));
+
         for (int i = minPage; i < maxPage; i++) {
-            player.sendMessage(new StringTextComponent(formatRule(player, rules.format_rule, i + 1, rules.rulesList().get(i))));
+            var = variableFinder(rules.format_rule, true);
+            var = replaceRule(var, i, rules.rulesList().get(i));
+            player.sendMessage(componentBuilder(var));
         }
-        player.sendMessage(new StringTextComponent(formatPage(player, rules.format_bottom, page, maxPages)));
+
+        var = variableFinder(rules.format_bottom, true);
+        var = replacePage(var, page, maxPages);
+        player.sendMessage(componentBuilder(var));
     }
+
 }

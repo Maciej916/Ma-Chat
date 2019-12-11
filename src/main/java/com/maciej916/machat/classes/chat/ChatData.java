@@ -4,4 +4,7 @@ public class ChatData {
 
     public String format;
 
+    public String getFormat() {
+        return format;
+    }
 }

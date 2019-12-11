@@ -4,30 +4,37 @@ import com.maciej916.machat.config.ConfigValues;
 import com.maciej916.machat.data.DataManager;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextComponent;
 import net.minecraftforge.event.ServerChatEvent;
 
-import static com.maciej916.machat.libs.Text.replaceVariables;
+import java.util.ArrayList;
+
+import static com.maciej916.machat.libs.text.TextFormat.*;
 
 public final class EventServerChat {
 
-    public static String formatChat(ServerPlayerEntity player, String message) {
-        String text = DataManager.getChat().format;
-        text = text.replaceAll("%message%", message);
-        return replaceVariables(player, text);
+    public static ArrayList<Object> replaceChat(ArrayList<Object> var, String message) {
+        ArrayList<String> replace = new ArrayList<>();
+        ArrayList<Object> replaceWith = new ArrayList<>();
+        replace.add("message");
+        replaceWith.add(new StringTextComponent(message));
+        return variableReplacer(var, replace, replaceWith);
     }
 
     public static void event(ServerChatEvent event) {
-        if (ConfigValues.customChat) {
+        if (ConfigValues.custom_chat) {
             ServerPlayerEntity player = event.getPlayer();
             String message = event.getMessage();
 
+            boolean colors = false;
             if (player.hasPermissionLevel(4)) {
-                message = message.replaceAll("&", Character.toString ((char) 167));
+               colors = true;
             }
 
-            TextComponent msg = new StringTextComponent(formatChat(player, message));
-            event.setComponent(msg);
+            ArrayList<Object> var = variableFinder(DataManager.getChat().getFormat(), colors);
+            var = replacePlayer(var, player);
+            var = replaceChat(var, message);
+
+            event.setComponent(componentBuilder(var));
         }
     }
 }

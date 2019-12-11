@@ -5,17 +5,28 @@ public final class ConfigValues {
 	public static String mainCatalog;
 
 	// Client
-	public static boolean clientEnable;
+	public static boolean client_enable;
 
 
-	// Chat
-	public static boolean customChat;
+	// Server
+
+	//Chat
+	public static boolean custom_chat;
+	public static boolean rank_colors;
+
+	public static String rank_color_0;
+	public static String rank_color_1;
+	public static String rank_color_2;
+	public static String rank_color_3;
+	public static String rank_color_4;
+
+
 
 	// Motd
-	public static boolean motdEnabled;
+	public static boolean motd_enabled;
 
 	// Rules
-	public static boolean rulesEnabled;
-	public static int rulesPerPage;
+	public static boolean rules_enabled;
+	public static int rules_per_page;
 
 }

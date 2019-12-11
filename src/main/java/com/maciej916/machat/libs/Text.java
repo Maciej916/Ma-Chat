@@ -1,38 +1,33 @@
 package com.maciej916.machat.libs;
 
-import com.maciej916.machat.classes.chat.ChatData;
 import com.maciej916.machat.config.ConfigValues;
-import com.maciej916.machat.data.DataManager;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 
-import javax.xml.crypto.Data;
+import java.lang.reflect.Field;
+
+import static com.maciej916.machat.libs.text.TextFormat.replaceColors;
 
 public class Text {
 
-    private static String rankColor(ServerPlayerEntity player) {
-        String username = player.getDisplayName().getString();
-        if (player.hasPermissionLevel(4)) {
-            return "&4" + username + "&r";
+    public static ITextComponent rankColor(ServerPlayerEntity player) {
+        ITextComponent displayName = player.getDisplayName();
+        if (ConfigValues.rank_colors) {
+            for (int i = 4; i >= 0; i--) {
+                if (player.hasPermissionLevel(i)) {
+                    try {
+                        Field colorField = ConfigValues.class.getField("rank_color_" + i);
+                        String colorFieldVal = (String) colorField.get(ConfigValues.class);
+                        ITextComponent newName = new StringTextComponent(replaceColors(colorFieldVal));
+                        displayName = newName.appendSibling(displayName);
+                        displayName = newName.appendSibling(new StringTextComponent(Character.toString ((char) 167) + "r"));
+                    } catch (Exception ignored) { }
+                    break;
+                }
+            }
         }
-        if (player.hasPermissionLevel(3)) {
-            return "&c" + username + "&r";
-        }
-        if (player.hasPermissionLevel(2)) {
-            return "&6" + username + "&r";
-        }
-        if (player.hasPermissionLevel(1)) {
-            return "&2" + username + "&r";
-        }
-        return "&8" + username + "&r";
+        return displayName;
     }
 
-    public static String replaceVariables(ServerPlayerEntity player, String text) {
-        text = text.replaceAll("%username%", rankColor(player));
-        text = text.replaceAll("%dimension%", player.dimension.getKey(player.dimension).toString());
-        text = text.replaceAll("%players%", String.valueOf(player.server.getPlayerList().getOnlinePlayerNames().length));
-        text = text.replaceAll("%max_players%", String.valueOf(player.server.getPlayerList().getMaxPlayers()));
-        text = text.replaceAll("&", Character.toString ((char) 167));
-        return text;
-    }
 }
