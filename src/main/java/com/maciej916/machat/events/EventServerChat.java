@@ -9,6 +9,7 @@ import net.minecraftforge.event.ServerChatEvent;
 import java.util.ArrayList;
 
 import static com.maciej916.machat.libs.text.TextFormat.*;
+import static com.maciej916.machat.libs.text.TextFormat.componentBuilder;
 
 public final class EventServerChat {
 
@@ -21,20 +22,25 @@ public final class EventServerChat {
     }
 
     public static void event(ServerChatEvent event) {
-        if (ConfigValues.custom_chat) {
-            ServerPlayerEntity player = event.getPlayer();
-            String message = event.getMessage();
+        ServerPlayerEntity player = event.getPlayer();
 
-            boolean colors = false;
-            if (player.hasPermissionLevel(4)) {
-               colors = true;
+        boolean dedicated = player.server.isDedicatedServer();
+        if (dedicated || (!dedicated && ConfigValues.client_enable)) {
+            if (ConfigValues.custom_chat) {
+                String message = event.getMessage();
+
+                boolean colors = false;
+                if (player.hasPermissionLevel(4)) {
+                    colors = true;
+                }
+
+                ArrayList<Object> var = variableFinder(DataManager.getChat().getFormat(), colors);
+                var = replacePlayer(var, player);
+                var = replaceChat(var, message);
+
+                event.setComponent(componentBuilder(var));
             }
-
-            ArrayList<Object> var = variableFinder(DataManager.getChat().getFormat(), colors);
-            var = replacePlayer(var, player);
-            var = replaceChat(var, message);
-
-            event.setComponent(componentBuilder(var));
         }
     }
+
 }

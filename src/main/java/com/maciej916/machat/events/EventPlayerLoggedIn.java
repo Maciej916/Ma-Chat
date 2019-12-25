@@ -15,26 +15,27 @@ public final class EventPlayerLoggedIn {
 
     public static void event(PlayerEvent.PlayerLoggedInEvent event) {
         ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
-        if (!player.server.isDedicatedServer() && !ConfigValues.client_enable) {
-            return;
-        }
 
-        if (ConfigValues.motd_enabled) {
-            BufferedReader reader;
-            try {
-                reader = new BufferedReader(new FileReader(ConfigValues.mainCatalog + "motd.txt"));
-                String line = reader.readLine();
-                while (line != null) {
-                    ArrayList<Object> var = variableFinder(line, true);
-                    var = replacePlayer(var, player);
-                    player.sendMessage(componentBuilder(var));
-                    line = reader.readLine();
+        boolean dedicated = player.server.isDedicatedServer();
+        if (dedicated || (!dedicated && ConfigValues.client_enable)) {
+            if (ConfigValues.motd_enabled) {
+                BufferedReader reader;
+                try {
+                    reader = new BufferedReader(new FileReader(ConfigValues.mainCatalog + "motd.txt"));
+                    String line = reader.readLine();
+                    while (line != null) {
+                        ArrayList<Object> var = variableFinder(line, true);
+                        var = replacePlayer(var, player);
+                        player.sendMessage(componentBuilder(var));
+                        line = reader.readLine();
+                    }
+                    reader.close();
+                } catch (Exception e) {
+                    Log.err("Failed to load motd.txt");
+                    Log.err(e.getMessage());
                 }
-                reader.close();
-            } catch (Exception e) {
-                Log.err("Failed to load motd.txt");
-                Log.err(e.getMessage());
             }
         }
     }
+
 }

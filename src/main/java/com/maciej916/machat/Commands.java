@@ -12,20 +12,18 @@ public class Commands {
     @SubscribeEvent
     public static void onServerStarting(FMLServerStartingEvent event) {
         CommandDispatcher<CommandSource> dispatcher = event.getCommandDispatcher();
-        if (!event.getServer().isDedicatedServer() && !ConfigValues.client_enable) {
-            return;
+
+        boolean dedicated = event.getServer().isDedicatedServer();
+        if (dedicated || (!dedicated && ConfigValues.client_enable)) {
+
+            // Rules
+            if (ConfigValues.rules_enabled) {
+                CommandRules.register(dispatcher);
+            }
+
+            // Mac
+            CommandMac.register(dispatcher);
         }
-
-        // Rules
-        if (ConfigValues.rules_enabled) {
-            CommandRules.register(dispatcher);
-        }
-
-        // Reload
-        CommandMacReload.register(dispatcher);
-
-
-
-
     }
+
 }

@@ -1,4 +1,4 @@
-package com.maciej916.machat.classes.chat;
+package com.maciej916.machat.classes;
 
 public class ChatData {
 

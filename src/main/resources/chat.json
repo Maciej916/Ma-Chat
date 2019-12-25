@@ -1,3 +1,4 @@
 {
-  "format": "%username%: %message%"
+  "format": "%username%: %message%",
+  ""
 }

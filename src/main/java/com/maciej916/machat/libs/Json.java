@@ -8,7 +8,7 @@ public class Json {
 
     public static void save(String catalog, String fileName, Object saveClass) {
         try (Writer writer = new FileWriter(catalog + fileName + ".json")) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
             gson.toJson(saveClass, writer);
         } catch (IOException ioe) {
             ioe.printStackTrace();

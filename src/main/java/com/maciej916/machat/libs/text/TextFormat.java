@@ -66,10 +66,14 @@ public class TextFormat {
         ArrayList<String> replace = new ArrayList<>();
         ArrayList<Object> replaceWith = new ArrayList<>();
 
+        ITextComponent raw_username = player.getDisplayName();
         ITextComponent username = rankColor(player);
         String dimension = Objects.requireNonNull(DimensionType.getKey(player.dimension)).toString();
         String players = String.valueOf(player.server.getPlayerList().getOnlinePlayerNames().length);
         String max_players = String.valueOf(player.server.getPlayerList().getMaxPlayers());
+
+        replace.add("raw_username");
+        replaceWith.add(raw_username);
 
         replace.add("username");
         replaceWith.add(username);

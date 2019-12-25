@@ -1,10 +1,19 @@
 {
   "_comment": "Rules",
   "rules.machat.not_exist": "§cThis page does not exist",
+  "rules.machat.added": "§aRule added!",
+  "rules.machat.removed": "§aRule removed!",
 
 
   "_comment": "Reload",
   "maereload.machat.done": "§aMod data reloaded!",
+
+
+  "_comment": "Auto Message",
+  "automessage.machat.frequency.min": "§cMinimum Auto Messages frequency id §45§c seconds!",
+  "automessage.machat.frequency.set": "§aAuto Messages frequency changed to %s seconds",
+  "automessage.machat.added": "§aMessage added!",
+  "automessage.machat.removed": "§aMessage removed!",
 
 
   "test.machat.test": "%s"

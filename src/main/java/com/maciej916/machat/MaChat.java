@@ -2,6 +2,7 @@ package com.maciej916.machat;
 
 import com.maciej916.machat.config.ConfigHolder;
 import com.maciej916.machat.data.DataLoader;
+import com.maciej916.machat.libs.auto_message.AutoMessage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -9,12 +10,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
+import net.minecraftforge.fml.event.server.FMLServerStoppingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(MaChat.MODID)
 public class MaChat
 {
     public static final String MODID = "ma-chat";
+    public static AutoMessage autoMessage;
 
     public MaChat() {
         final ModLoadingContext modLoadingContext = ModLoadingContext.get();
@@ -34,6 +37,13 @@ public class MaChat
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
         DataLoader.load();
+        autoMessage = new AutoMessage(event.getServer());
+        autoMessage.startTimer();
+    }
+
+    @SubscribeEvent
+    public void onServerStopping(FMLServerStoppingEvent event) {
+        autoMessage.stopTimer();
     }
 
 }
