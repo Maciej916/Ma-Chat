@@ -16,7 +16,7 @@ issueTrackerURL="https://github.com/Maciej916/Ma-Chat/issues"
     [[dependencies.ma-chat]]
         modId="forge"
         mandatory=true
-        versionRange="[30.0.14,)"
+        versionRange="[30,)"
         ordering="NONE"
         side="BOTH"
 

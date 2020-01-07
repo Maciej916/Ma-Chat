@@ -1,6 +1,6 @@
 package com.maciej916.machat.commands;
 
-import com.maciej916.machat.classes.rules.RulesData;
+import com.maciej916.machat.classes.RulesData;
 import com.maciej916.machat.config.ConfigValues;
 import com.maciej916.machat.data.DataManager;
 import com.maciej916.machat.libs.Methods;

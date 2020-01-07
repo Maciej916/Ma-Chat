@@ -1,0 +1,9 @@
+{
+  "frequency": 60000,
+  "messages": [
+    "&6Your username: &c%username%",
+    "&6Your dimension: &c%dimension%",
+    "&6Current players: &c%players%",
+    "&6Max players: &c%max_players%"
+  ]
+}

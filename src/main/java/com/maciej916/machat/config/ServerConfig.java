@@ -29,13 +29,13 @@ final class ServerConfig {
 		builder.push("custom_chat");
 			custom_chat = builder.define("enabled", true);
 			rank_colors = builder.define("rank_colors", true);
-			builder.push("colors");
-				rank_color_4 = builder.define("4", "&4");
-				rank_color_3 = builder.define("3", "&c");
-				rank_color_2 = builder.define("2", "&6");
-				rank_color_1 = builder.define("1", "&2");
-				rank_color_0 = builder.define("0", "&8");
-			builder.pop();
+		builder.push("colors");
+			rank_color_4 = builder.define("4", "&4");
+			rank_color_3 = builder.define("3", "&c");
+			rank_color_2 = builder.define("2", "&6");
+			rank_color_1 = builder.define("1", "&2");
+			rank_color_0 = builder.define("0", "&8");
+		builder.pop();
 		builder.pop();
 
 		// Motd

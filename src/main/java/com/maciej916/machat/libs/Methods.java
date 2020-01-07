@@ -1,7 +1,6 @@
 package com.maciej916.machat.libs;
 
 import com.maciej916.machat.MaChat;
-import com.maciej916.machat.config.ConfigValues;
 import net.minecraft.util.text.TextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.fml.ModContainer;

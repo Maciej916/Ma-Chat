@@ -1,4 +1,4 @@
-package com.maciej916.machat.classes.rules;
+package com.maciej916.machat.classes;
 
 import com.maciej916.machat.config.ConfigValues;
 import com.maciej916.machat.libs.Json;
@@ -28,6 +28,6 @@ public class RulesData {
     }
 
     public void saveData() {
-        Json.save(ConfigValues.mainCatalog, "rules.json", this);
+        Json.save(ConfigValues.mainCatalog, "rules", this);
     }
 }
