@@ -35,7 +35,9 @@ public class AutoMessage {
     }
 
     public void stopTimer() {
-        timer.cancel();
+        if (timer != null) {
+            timer.cancel();
+        }
     }
 
     public void restartTimer() {
