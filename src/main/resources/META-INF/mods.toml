@@ -1,12 +1,12 @@
 modLoader="javafml"
-loaderVersion="[30,)"
+loaderVersion="[31,)"
 issueTrackerURL="https://github.com/Maciej916/Ma-Chat/issues"
 
 [[mods]]
     modId="ma-chat"
     version="${file.jarVersion}"
     displayName="Ma Chat"
-    updateJSONURL="https://raw.githubusercontent.com/Maciej916/Ma-Chat/1.15.1/update.json"
+    updateJSONURL="https://raw.githubusercontent.com/Maciej916/Ma-Chat/1.15.2/update.json"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/ma-chat"
     logoFile="ma-chat.png"
     credits=""
@@ -16,13 +16,13 @@ issueTrackerURL="https://github.com/Maciej916/Ma-Chat/issues"
     [[dependencies.ma-chat]]
         modId="forge"
         mandatory=true
-        versionRange="[30,)"
+        versionRange="[31.0.1,)"
         ordering="NONE"
         side="BOTH"
 
     [[dependencies.ma-chat]]
         modId="minecraft"
         mandatory=true
-        versionRange="[1.15.1]"
+        versionRange="[1.15.2]"
         ordering="NONE"
         side="BOTH"
