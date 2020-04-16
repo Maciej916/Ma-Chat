@@ -29,4 +29,6 @@ public final class ConfigValues {
 	public static boolean rules_enabled;
 	public static int rules_per_page;
 
+	// Chat
+	public static String chatClearTemplate;
 }

@@ -15,6 +15,10 @@
   "automessage.machat.added": "§aMessage added!",
   "automessage.machat.removed": "§aMessage removed!",
 
+  "_comment": "Chat",
+  "chat.machat.on": "§aChat enabled!",
+  "chat.machat.off": "§aChat disabled!",
+  "chat.machat.disabled": "§cChat is currently disabled!",
 
   "test.machat.test": "%s"
 }

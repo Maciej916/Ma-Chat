@@ -23,6 +23,9 @@ public class Commands {
 
             // Mac
             CommandMac.register(dispatcher);
+
+            // Chat
+            CommandChat.register(dispatcher);
         }
     }
 

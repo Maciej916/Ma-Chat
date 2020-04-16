@@ -32,6 +32,9 @@ public final class ConfigHelper {
 		// Rules
 		ConfigValues.rules_enabled = ConfigHolder.SERVER.rulesEnabled.get();
 		ConfigValues.rules_per_page = ConfigHolder.SERVER.rulesPerPage.get();
+
+		// Chat
+		ConfigValues.chatClearTemplate = ConfigHolder.SERVER.chatClearTemplate.get();
 	}
 
 	public static void setValueAndSave(final ModConfig modConfig, final String path, final Object newValue) {

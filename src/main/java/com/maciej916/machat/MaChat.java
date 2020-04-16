@@ -18,6 +18,7 @@ public class MaChat
 {
     public static final String MODID = "ma-chat";
     public static AutoMessage autoMessage;
+    public static boolean chatEnabled = true;
 
     public MaChat() {
         final ModLoadingContext modLoadingContext = ModLoadingContext.get();

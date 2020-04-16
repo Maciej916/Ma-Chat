@@ -1,7 +1,9 @@
 package com.maciej916.machat.events;
 
+import com.maciej916.machat.MaChat;
 import com.maciej916.machat.config.ConfigValues;
 import com.maciej916.machat.data.DataManager;
+import com.maciej916.machat.libs.Methods;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.event.ServerChatEvent;
@@ -23,6 +25,12 @@ public final class EventServerChat {
 
     public static void event(ServerChatEvent event) {
         ServerPlayerEntity player = event.getPlayer();
+
+        if (!MaChat.chatEnabled && !player.hasPermissionLevel(1)) {
+            player.sendMessage(Methods.formatText("chat.machat.disabled"));
+            event.setCanceled(true);
+            return;
+        }
 
         boolean dedicated = player.server.isDedicatedServer();
         if (dedicated || (!dedicated && ConfigValues.client_enable)) {

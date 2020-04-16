@@ -24,6 +24,9 @@ final class ServerConfig {
 	final ForgeConfigSpec.BooleanValue rulesEnabled;
 	final ForgeConfigSpec.IntValue rulesPerPage;
 
+	// Chat
+	final ForgeConfigSpec.ConfigValue<String> chatClearTemplate;
+
 	ServerConfig(final ForgeConfigSpec.Builder builder) {
 		// Chat
 		builder.push("custom_chat");
@@ -47,6 +50,11 @@ final class ServerConfig {
 		builder.push("rules");
 			rulesEnabled = builder.translation(MaChat.MODID + ".config.rulesEnabled").define("enabled", true);
 			rulesPerPage = builder.translation(MaChat.MODID + ".config.rulesPerPage").defineInRange("per_page", 5, 1, MAX);
+		builder.pop();
+
+		// Chat
+		builder.push("chat");
+		chatClearTemplate = builder.define("0", "\n&8Chat cleared\n");
 		builder.pop();
 
 	}
