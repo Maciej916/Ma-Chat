@@ -1,0 +1,24 @@
+{
+  "_comment": "Правила",
+  "rules.machat.not_exist": "§cЭтой страницы не существует",
+  "rules.machat.added": "§aПравило добавлено!",
+  "rules.machat.removed": "§aПравило удалено!",
+
+
+  "_comment": "Перезагрузка",
+  "maereload.machat.done": "§aДанные мода перезагружены!",
+
+
+  "_comment": "Авто-сообщение",
+  "automessage.machat.frequency.min": "§cМинимальная частота id авто-сообщений §45§c секунд!",
+  "automessage.machat.frequency.set": "§aЧастота авто-сообщений меняется в %s секундах",
+  "automessage.machat.added": "§aСообщение добавлено!",
+  "automessage.machat.removed": "§aСообщение удалено!",
+
+  "_comment": "Chat",
+  "chat.machat.on": "§aЧат включён!",
+  "chat.machat.off": "§aЧат выключен!",
+  "chat.machat.disabled": "§cНа данный момент, чат отключён!",
+
+  "test.machat.test": "%s"
+}
